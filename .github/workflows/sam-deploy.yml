@@ -13,15 +13,28 @@ jobs:
       - name: Checkout repository
         uses: actions/checkout@v2
 
+      - name: Set up Python 3.8
+        uses: actions/setup-python@v2
+        with:
+          python-version: 3.8
+
       - name: Set up Node.js 18.x
         uses: actions/setup-node@v2
         with:
           node-version: '18.*'
 
-      - name: Install dependencies
+      # - name: Install dependencies
+      #   run: |
+      #     npm install
+      #     npm install -g aws-sam-cli
+
+      - name: Install SAM CLI
         run: |
-          npm install
-          npm install -g aws-sam-cli
+          python -m pip install --upgrade pip
+          pip install aws-sam-cli
+
+      - name: Install Node.js dependencies
+        run: npm install
 
       - name: Package the app
         run: |
