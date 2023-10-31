@@ -38,7 +38,7 @@ jobs:
 
       - name: Package the app
         run: |
-          sam package --template-file template.yaml --output-template-file packaged.yaml --s3-bucket bucketauthlambda
+          sam package --template-file template.yaml --output-template-file packaged.yaml --s3-bucket bucketauthlambda --no-resolve-s3
 
       - name: Deploy the app
         run: |
