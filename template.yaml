@@ -17,11 +17,11 @@ Resources:
       Environment:
         Variables:
           JWT_SECRET: !Ref JWTSecretParameter
-          RDS_DATABASE: !Ref DataBaseParameter
-          RDS_HOSTNAME: !Ref HostnameParameter
-          RDS_PASSWORD: !Ref PasswordParameter
-          RDS_PORT: !Ref PortParameter
-          RDS_USERNAME: !Ref UsernameParameter
+          RDS_DATABASE: !Ref RDSDatabaseParameter
+          RDS_HOSTNAME: !Ref RDSHostnameParameter
+          RDS_PASSWORD: !Ref RDSPasswordParameter
+          RDS_PORT: !Ref RDSPortParameter
+          RDS_USERNAME: !Ref RDSUsernameParameter
       Architectures:
         - x86_64
       Events:
