@@ -35,6 +35,10 @@ jobs:
         run: |
           aws configure set region us-east-1
 
+      - name: Set Environment Variables
+        run: |
+          echo 'export JWT_SECRET=valor_1' >> $GITHUB_ENV
+
       - name: Package the app
         run: |
           sam package --template-file template.yaml --s3-bucket aws-sam-cli-managed-default-samclisourcebucket-dzcmderbpgut --region us-east-1 --config-env=github --debug
