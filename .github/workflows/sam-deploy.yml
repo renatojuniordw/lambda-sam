@@ -47,7 +47,7 @@ jobs:
 
       - name: Deploy the app
         run: |
-          echo "y" | sam deploy --template-file template.yaml --stack-name CloudFormationAuthLambda --capabilities CAPABILITY_IAM --region us-east-1
+          echo "y" | sam deploy --template-file template.yaml --stack-name auth --capabilities CAPABILITY_IAM --region us-east-1
         env:
           AWS_ACCESS_KEY_ID: ${{ secrets.AWS_ACCESS_KEY_ID }}
           AWS_SECRET_ACCESS_KEY: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
