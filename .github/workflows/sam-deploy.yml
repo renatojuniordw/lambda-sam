@@ -23,11 +23,6 @@ jobs:
         with:
           node-version: '18.*'
 
-      # - name: Install dependencies
-      #   run: |
-      #     npm install
-      #     npm install -g aws-sam-cli
-
       - name: Install SAM CLI
         run: |
           python -m pip install --upgrade pip
@@ -38,7 +33,7 @@ jobs:
 
       - name: Package the app
         run: |
-          sam package --template-file template.yaml --output-template-file packaged.yaml --s3-bucket bucketauthlambda --no-resolve-s3
+          sam package --template-file template.yaml --s3-bucket bucketauthlambda --debug
 
       - name: Deploy the app
         run: |
