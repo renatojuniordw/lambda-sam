@@ -13,7 +13,7 @@ Resources:
     Properties:
       Handler: index.handler
       Runtime: nodejs18.x
-      FunctionName: fiap-auth
+      FunctionName: function-auth
       Environment:
         Variables:
           JWT_SECRET: !Ref JWTSecretParameter
