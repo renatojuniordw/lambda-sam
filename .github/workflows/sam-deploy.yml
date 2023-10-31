@@ -53,7 +53,7 @@ jobs:
         run: |
           echo "y" | sam deploy \
             --template-file template.yaml \
-            --stack-name AuthLambda \
+            --stack-name GatewayAuthLambda \
             --capabilities CAPABILITY_IAM \
             --region us-east-1 \
             --parameter-overrides \
