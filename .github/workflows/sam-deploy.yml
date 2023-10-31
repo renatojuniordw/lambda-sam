@@ -33,7 +33,7 @@ jobs:
 
       - name: Package the app
         run: |
-          sam package --template-file template.yaml --s3-bucket bucketauthlambda --debug
+          sam package --template-file template.yaml --s3-bucket bucketauthlambda --config-env=github --debug
 
       - name: Deploy the app
         run: |
