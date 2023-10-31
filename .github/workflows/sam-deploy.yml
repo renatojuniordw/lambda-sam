@@ -51,7 +51,24 @@ jobs:
 
       - name: Deploy the app
         run: |
-          echo "y" | sam deploy --template-file template.yaml --stack-name auth --capabilities CAPABILITY_IAM --region us-east-1
+          echo "y" | sam deploy \
+            --template-file template.yaml \
+            --stack-name AuthLambda \
+            --capabilities CAPABILITY_IAM \
+            --region us-east-1 \
+            --parameter-overrides \
+              JWTSecretParameter=$JWT_SECRET \
+              RDSDatabaseParameter=$RDS_DATABASE \
+              RDSHostnameParameter=$RDS_HOSTNAME \
+              RDSPasswordParameter=$RDS_PASSWORD \
+              RDSPortParameter=$RDS_PORT \
+              RDSUsernameParameter=$RDS_USERNAME
         env:
           AWS_ACCESS_KEY_ID: ${{ secrets.AWS_ACCESS_KEY_ID }}
           AWS_SECRET_ACCESS_KEY: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
+          JWT_SECRET: ${{ secrets.JWT_SECRET }}
+          RDS_DATABASE: ${{ secrets.RDS_DATABASE }}
+          RDS_HOSTNAME: ${{ secrets.RDS_HOSTNAME }}
+          RDS_PASSWORD: ${{ secrets.RDS_PASSWORD }}
+          RDS_PORT: ${{ secrets.RDS_PORT }}
+          RDS_USERNAME: ${{ secrets.RDS_USERNAME }}

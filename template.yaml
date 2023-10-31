@@ -13,6 +13,15 @@ Resources:
     Properties:
       Handler: index.handler
       Runtime: nodejs18.x
+      FunctionName: fiap-auth-lambda
+      Environment:
+        Variables:
+          JWT_SECRET: !Ref JWTSecretParameter
+          RDS_DATABASE: !Ref DataBaseParameter
+          RDS_HOSTNAME: !Ref HostnameParameter
+          RDS_PASSWORD: !Ref PasswordParameter
+          RDS_PORT: !Ref PortParameter
+          RDS_USERNAME: !Ref UsernameParameter
       Architectures:
         - x86_64
       Events:
@@ -21,6 +30,31 @@ Resources:
           Properties:
             Path: /user
             Method: post
+
+Parameters:
+  JWTSecretParameter:
+    Type: String
+    Default: YourDefaultJWTSecretValue
+
+  RDSDatabaseParameter:
+    Type: String
+    Default: YourDefaultRDSDatabaseValue
+
+  RDSHostnameParameter:
+    Type: String
+    Default: YourDefaultRDSHostnameValue
+
+  RDSPasswordParameter:
+    Type: String
+    Default: YourDefaultRDSPasswordValue
+
+  RDSPortParameter:
+    Type: Number
+    Default: "3306"
+
+  RDSUsernameParameter:
+    Type: String
+    Default: YourDefaultRDSUsernameValue
 
 Outputs:
   AuthApi:
